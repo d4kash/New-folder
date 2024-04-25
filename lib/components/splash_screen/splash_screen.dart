@@ -13,26 +13,26 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => SplashScreenState();
 }
 
-class SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class SplashScreenState extends State<SplashScreen> {
   static const String KEYLOGINPERSIST = 'isLogedIn';
 
-  late AnimationController _controller;
-  late Animation<double> _animation;
+  // late AnimationController _controller;
+  // late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1), // Animation duration
-    );
+    // _controller = AnimationController(
+    //   vsync: this,
+    //   duration: const Duration(seconds: 1), // Animation duration
+    // );
 
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    // _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
 
-    Timer(const Duration(seconds: 1), () {
-      _controller.forward();
-    });
+    // Timer(const Duration(seconds: 1), () {
+    //   _controller.forward();
+    // });
 
     // Timer(const Duration(seconds: 3), () {
       // Get.offAll(() => PilotLogin());
@@ -44,7 +44,7 @@ class SplashScreenState extends State<SplashScreen> with SingleTickerProviderSta
 
   @override
   void dispose() {
-    _controller.dispose();
+    // _controller.dispose();
     // _animation.dispose();
     super.dispose();
   }
@@ -57,15 +57,12 @@ class SplashScreenState extends State<SplashScreen> with SingleTickerProviderSta
         height: Constant.height * 1, // Using Get.height instead of double.infinity
         decoration: const BoxDecoration(color: Constant.textBtnColor),
         child: Center(
-          child: FadeTransition(
-            opacity: _animation,
-            child: Text(
-              'ORANGE-YATRI',
-              style: TextStyle(
-                  fontSize: Constant.width * .1,
-                  color: Colors.white, // Changed text color to white
-                  fontWeight: FontWeight.w900),
-            ),
+          child: Text(
+            'ORANGE-YATRI',
+            style: TextStyle(
+                fontSize: Constant.width * .1,
+                color: Colors.white, // Changed text color to white
+                fontWeight: FontWeight.w900),
           ),
         ),
       ),
