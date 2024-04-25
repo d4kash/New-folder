@@ -34,10 +34,10 @@ class SplashScreenState extends State<SplashScreen> with SingleTickerProviderSta
       _controller.forward();
     });
 
-    Timer(const Duration(seconds: 3), () {
+    // Timer(const Duration(seconds: 3), () {
       // Get.offAll(() => PilotLogin());
       whereToGo();
-    });
+    // });
 
     // whereToGo();
   }
@@ -74,13 +74,22 @@ class SplashScreenState extends State<SplashScreen> with SingleTickerProviderSta
 
   void whereToGo() async {
     var pref = await SharedPreferences.getInstance();
-    var isLoggedIn = pref.getBool(KEYLOGINPERSIST);
-    if (isLoggedIn != null) {
-      if (isLoggedIn) {
-        Get.offAll(() => const PilotHomePage());
-      }
-    } else {
-      Get.offAll(() => const PilotLogin());
+    try {
+  var isLoggedIn = pref.getBool(KEYLOGINPERSIST);
+  debugPrint("isLoggedIn: $isLoggedIn");
+  if (isLoggedIn != null) {
+    if (isLoggedIn) {
+      Get.offAll(() => const PilotHomePage());
+    }else {
+    Get.offAll(() => const PilotLogin());
+
     }
+  } else {
+    Get.offAll(() => const PilotLogin());
+  }
+} on Exception catch (e) {
+  debugPrint("isLoggedIn error: $e");
+  // TODO
+}
   }
 }
