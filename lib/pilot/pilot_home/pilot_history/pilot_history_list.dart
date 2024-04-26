@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:orange_yatri/common/db/localData.dart';
 import 'package:orange_yatri/constant/constant_color.dart';
-import 'package:orange_yatri/pilot/pilot_authentication/pilot_login.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_history/pilot_history_view_particular.dart';
 import 'package:orange_yatri/ui/ui_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,7 +23,7 @@ class _PilotHistoryListState extends State<PilotHistoryList> {
 
   Future<Object> historyData() async {
     var pref = await SharedPreferences.getInstance();
-    dlNumber = pref.getString(PilotLoginState.KEYDLNUMBER)!;
+    dlNumber = pref.getString(LocalDb.KEYDLNUMBER)!;
 
     var userData = {"dlNumber": dlNumber};
 

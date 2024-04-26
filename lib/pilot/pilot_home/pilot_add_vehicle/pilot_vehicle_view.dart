@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:orange_yatri/common/db/localData.dart';
 import 'package:orange_yatri/constant/constant_color.dart';
-import 'package:orange_yatri/pilot/pilot_authentication/pilot_login.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_home_page.dart';
 import 'package:orange_yatri/ui/ui_helper.dart';
 import 'package:http/http.dart' as http;
@@ -77,7 +77,7 @@ class _PilotVehicleViewState extends State<PilotVehicleView> {
   void deleteVehicle() async {
 
     var pref = await SharedPreferences.getInstance();
-    token = pref.getString(PilotLoginState.KEYTOKEN);
+    token = pref.getString(LocalDb.KEYTOKEN);
 
     var userData = {'vehicleNumber': widget.vehicleNumber};
     // var authData = {

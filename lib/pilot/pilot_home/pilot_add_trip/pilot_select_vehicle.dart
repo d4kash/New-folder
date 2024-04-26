@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:orange_yatri/common/db/localData.dart';
 import 'package:orange_yatri/constant/constant_color.dart';
-import 'package:orange_yatri/pilot/pilot_authentication/pilot_login.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_add_vehicle/pilot_add_vehicle.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_add_trip/pilot_start_your_ride.dart';
 import 'package:orange_yatri/ui/ui_helper.dart';
@@ -54,7 +54,7 @@ class _PilotSelectVehicleState extends State<PilotSelectVehicle> {
 
   Future<Object> allVehicleData() async {
     var pref = await SharedPreferences.getInstance();
-    var dlNumber = pref.getString(PilotLoginState.KEYDLNUMBER)!;
+    var dlNumber = pref.getString(LocalDb.KEYDLNUMBER)!;
 
     var userData = {"dlNumber": dlNumber};
 

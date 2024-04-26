@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:orange_yatri/common/db/localData.dart';
 import 'package:orange_yatri/constant/constant_color.dart';
-import 'package:orange_yatri/pilot/pilot_authentication/pilot_login.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_add_trip/pilot_select_vehicle.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_add_trip/pilot_end_your_trip.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_add_vehicle/pilot_all_vehicle.dart';
@@ -27,8 +27,8 @@ class _PilotHomePageState extends State<PilotHomePage> {
 
   Future profileData() async {
     var pref = await SharedPreferences.getInstance();
-    dlNumber = pref.getString(PilotLoginState.KEYDLNUMBER)!;
-    token = pref.getString(PilotLoginState.KEYTOKEN)!;
+    dlNumber = pref.getString(LocalDb.KEYDLNUMBER)!;
+    token = pref.getString(LocalDb.KEYTOKEN)!;
 
     var userData = {"dlNumber": dlNumber};
 

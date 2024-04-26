@@ -34,7 +34,7 @@ class UiHelper {
       int characterCount) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         obscureText: toHide,
         maxLines: 1,

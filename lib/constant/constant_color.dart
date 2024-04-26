@@ -9,6 +9,6 @@ class Constant extends GetxController {
   static final Color color2 = Colors.grey.shade600;
 
   /// Constant height and width
-  static final height = Get.height;
-  static final width = Get.width;
+  static final height = Get.size.height;
+  static final width = Get.size.width;
 }

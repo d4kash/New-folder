@@ -102,9 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(2),
                           ),
                           onChanged: (bool? value) {
-                            setState(() {
-                              this.value = value!;
-                            });
+                            // setState(() {
+                              // this.value = value!;
+                            // });
                           },
                         ),
                         const Text('Remember me', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Constant.textColor),),

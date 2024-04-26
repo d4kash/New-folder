@@ -61,16 +61,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
         if(newResponse['body-json']['statusCode'] == 200){
           debugPrint('hallo-2');
-          setState(() {
+          // setState(() {
             err = '';
-          });
+          // });
           Get.to(VerifyEmailAddressPage(email: emailController.text.toString(),));
         } else if(newResponse['body-json']['statusCode'] == 400){
 
-          setState(() {
+          // setState(() {
             err = newResponse['body-json']['body'];
-          });
-
+          // });
+// 
           debugPrint(newResponse['body-json']['statusCode']);
           debugPrint(newResponse['body-json']['body']);
         }

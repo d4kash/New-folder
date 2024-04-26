@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:orange_yatri/components/splash_screen/splash_screen.dart';
+import 'package:orange_yatri/common/db/localData.dart';
 import 'package:orange_yatri/constant/constant_color.dart';
 import 'package:orange_yatri/pilot/pilot_authentication/pilot_login.dart';
 import 'package:orange_yatri/pilot/pilot_profile/pilot_update_profile.dart';
@@ -24,8 +24,8 @@ class _PilotProfileScreenState extends State<PilotProfileScreen> {
 
   Future<Object> profileData() async {
     var pref = await SharedPreferences.getInstance();
-    dlNumber = pref.getString(PilotLoginState.KEYDLNUMBER);
-    token = pref.getString(PilotLoginState.KEYTOKEN);
+    dlNumber = pref.getString(LocalDb.KEYDLNUMBER);
+    token = pref.getString(LocalDb.KEYTOKEN);
 
     var userData = {"dlNumber": dlNumber};
 
@@ -297,5 +297,5 @@ class _PilotProfileScreenState extends State<PilotProfileScreen> {
 
 void loginPersistent() async {
   var pref = await SharedPreferences.getInstance();
-  pref.setBool(SplashScreenState.KEYLOGINPERSIST, false);
+  pref.setBool(LocalDb.KEYLOGINPERSIST, false);
 }

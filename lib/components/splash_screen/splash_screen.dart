@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:orange_yatri/common/db/localData.dart';
 import 'package:orange_yatri/constant/constant_color.dart';
 import 'package:orange_yatri/pilot/pilot_authentication/pilot_login.dart';
 import 'package:orange_yatri/pilot/pilot_home/pilot_home_page.dart';
@@ -14,39 +15,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
-  static const String KEYLOGINPERSIST = 'isLogedIn';
 
-  // late AnimationController _controller;
-  // late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // _controller = AnimationController(
-    //   vsync: this,
-    //   duration: const Duration(seconds: 1), // Animation duration
-    // );
-
-    // _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
-
-    // Timer(const Duration(seconds: 1), () {
-    //   _controller.forward();
-    // });
-
-    // Timer(const Duration(seconds: 3), () {
-      // Get.offAll(() => PilotLogin());
-      whereToGo();
-    // });
-
-    // whereToGo();
-  }
-
-  @override
-  void dispose() {
-    // _controller.dispose();
-    // _animation.dispose();
-    super.dispose();
+@override
+  void didChangeDependencies() async {
+   await whereToGo();
+    super.didChangeDependencies();
   }
 
   @override
@@ -69,17 +42,16 @@ class SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  void whereToGo() async {
+  Future whereToGo() async {
     var pref = await SharedPreferences.getInstance();
     try {
-  var isLoggedIn = pref.getBool(KEYLOGINPERSIST);
+  var isLoggedIn = pref.getBool(LocalDb.KEYLOGINPERSIST);
   debugPrint("isLoggedIn: $isLoggedIn");
   if (isLoggedIn != null) {
     if (isLoggedIn) {
       Get.offAll(() => const PilotHomePage());
     }else {
     Get.offAll(() => const PilotLogin());
-
     }
   } else {
     Get.offAll(() => const PilotLogin());
